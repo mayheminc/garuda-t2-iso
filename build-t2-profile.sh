@@ -11,7 +11,8 @@
 #   2. pick a profile from /var/cache/garuda-tools/iso-profiles/garuda/
 #   3. sudo cp -Rvi <profile> <profile>-t2
 #   4. run setup-t2-profile.sh inside <profile>-t2
-#   5. confirm and sudo buildiso -p <profile>-t2 -k linux-t2
+#   5. remove any stale build chroot for this profile, then confirm and run
+#      sudo buildiso -p <profile>-t2 -k linux-t2
 #   6. print the resulting iso directory
 #
 # This orchestrator itself does not need root; every privileged step is
@@ -24,6 +25,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # Overridable via environment (used for testing); defaults are the real paths.
 PROFILE_REPO="${PROFILE_REPO:-/var/cache/garuda-tools/iso-profiles/garuda}"
 OUTPUT_ROOT="${OUTPUT_ROOT:-/var/cache/garuda-tools/garuda-builds/iso/garuda}"
+CHROOT_BASE="${CHROOT_BASE:-/var/cache/garuda-tools/garuda-chroots/buildiso}"
 KERNEL="linux-t2"
 
 # Preflight requirements:
@@ -67,6 +69,27 @@ post_install_note() {
     msg "    ${SCRIPT_DIR}/POST-INSTALL.md"
     msg "Then run the audio post-install helper (from a user account; uses sudo):"
     msg "    /usr/local/bin/t2-audio.sh"
+}
+
+# chroot_dir <profile-t2>
+chroot_dir() { printf '%s/%s\n' "$CHROOT_BASE" "$1"; }
+
+# delete_chroot <profile-t2>
+# Removes the stale build chroot for this profile before a new build. buildiso
+# refuses to start a fresh build until the chroot is gone (e.g. after a failed
+# pacman fetch), so this is cleared here. sudo-wrapped; returns non-zero
+# (without exiting) if there was nothing to remove.
+delete_chroot() {
+    local profile="$1"
+    local cr
+    cr="$(chroot_dir "$profile")"
+    if [ -d "$cr" ]; then
+        msg ">> sudo rm -rf $cr"
+        sudo rm -rf "$cr"
+        return 0
+    fi
+    msg ">> (no chroot to remove: $cr)"
+    return 1
 }
 
 # ensure_dependencies
@@ -235,6 +258,10 @@ esac
 
 build_log="${OUTPUT_ROOT:?}/${sel}-t2/build.log"
 mkdir -p "$(dirname "$build_log")"
+
+# The build chroot must not exist for buildiso to start cleanly; remove any
+# stale artifacts first (see delete_chroot above).
+delete_chroot "$sel-t2"
 
 msg ">> sudo buildiso -p $sel-t2 -k $KERNEL"
 msg ">> output streamed live and logged to ${build_log}"
