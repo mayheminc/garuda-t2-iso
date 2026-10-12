@@ -162,9 +162,9 @@ After installing the built ISO, review `POST-INSTALL.md` (delivered to
 4. **Fan / wifi-bt modules** - `brcmfmac` loaded via `modules-load.d/t2.conf`;
    `brcmfmac_wcc` / `hci_bcm4377` blacklisted via `modprobe.d/t2.conf`;
    `t2fanrd` managed by systemd with a post-sleep restart hook.
-5. **edit `/etc/modprobe.d/hid_apple.conf` change `options hid_apple fnmode=2`;
+5. **Change Fn key behavior** - edit `/etc/modprobe.d/hid_apple.conf` change `options hid_apple fnmode=2`;
     0 - disable Fn key, 1 - Hold Fn for Function Keys, 2 - Hold Fn for Media Keys ;
-    then `sudo dracut-rebuild` ; temporarily apply `echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode=2`
+    then `sudo dracut-rebuild` ; temporarily apply with `echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode`
 
 
 All post-install paths are on the **installed** system, not the build host.
