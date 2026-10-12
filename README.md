@@ -1,4 +1,4 @@
-# Garuda Apple T2 ISO - Build Workflow
+# Garuda Linux Intel Apple T2 ISO - Build Workflow
 MayhemINC 2026 - provided with no warranty or liability
 
 see https://wiki.t2linux.org/ for more information and setup tips
@@ -93,7 +93,7 @@ It:
    re-lists so you can work on a different profile.
 2. **Prompts for an action** on that profile:
    - **`build iso`** - removes the profile's stale build chroot with `sudo`
-     (a failed `pacman` fetch during a b        printf '  [%d] quit\n'          4uild leaves the chroot in a state that
+     (a failed `pacman` fetch during a build leaves the chroot in a state that
      makes `buildiso` refuse to start a new one, so this is required before a
      fresh build can run), then runs `sudo buildiso -p <profile>-t2 -k
      linux-t2` and prints the same post-build report `build-t2-profile.sh`
@@ -179,7 +179,6 @@ All post-install paths are on the **installed** system, not the build host.
 
 ## Notes / assumptions
 
-- `sudo` requires a password at runtime (this script does not and should not
-  hardcode credentials).
+- `sudo` requires a password at runtime.
 - `OUTPUT_ROOT` and `PROFILE_REPO` can be overridden via the environment
   (defaults match the real paths) - this mainly makes the workflow testable.
