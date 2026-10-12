@@ -131,8 +131,8 @@ to a local file rather than writing *through* the shared template), then:
 - **Writes `user-repos.conf`** - the `[arch-mact2]` mirror (`mirror.funami.tech`).
 - **Writes `…/modules-load.d/t2.conf`** (both overlays) - `brcmfmac`.
 - **Writes `…/modprobe.d/t2.conf`** (both overlays) - blacklists `brcmfmac_wcc` and `hci_bcm4377`.
-- **Asks about the Apple Fn key at the start**
-- **Writes `…/modprobe.d/hid_apple.conf` in both overlays with
+- **Asks** about the Apple Fn key at the start
+- **Writes** `…/modprobe.d/hid_apple.conf` in both overlays with
   `options hid_apple fnmode=<n>`: `1` hold Fn for function keys, `2` hold Fn for
   media keys (the sane default), `0` disable Fn entirely. Just pressing enter defaults
   to `2`; invalid input re-prompts.
