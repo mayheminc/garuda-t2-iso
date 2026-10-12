@@ -31,6 +31,13 @@ artifacts - without recreating the profile each time.
 
 ## Quick start
 
+```bash
+git clone https://github.com/mayheminc/garuda-t2-iso.git
+cd garuda-t2-iso
+chmod a+x *.sh
+./build-t2-profile.sh
+```
+
 Run the orchestrator from the build host (you will be prompted for your sudo
 password at each privileged step):
 
