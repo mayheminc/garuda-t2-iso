@@ -14,7 +14,7 @@ from it. It is organized as a small three-script pipeline:
 | `build-t2-profile.sh` | Top-level orchestrator (runs end to end, prompts the user) |
 | `t2-build-tools.sh` | Interactive loop to build/clean an existing `<profile>-t2` ISO on demand |
 | `setup-t2-profile.sh` | Applies the T2 edits and overlays into one fresh `<profile>-t2` directory |
-| `POST-INSTALL.md` | Reference for steps to run *after* installing the ISO (at `/usr/local/share/garuda-t2/`) |
+| `POST-INSTALL.md` | Reference for steps to run *after* installing (at `/usr/local/share/garuda-t2/`) |
 
 `build-t2-profile.sh` copies `setup-t2-profile.sh` (and `POST-INSTALL.md`) into
 the fresh `<profile>-t2` directory and runs it there, so `setup-t2-profile.sh`
