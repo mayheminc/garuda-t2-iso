@@ -40,9 +40,9 @@ sudo rm -r /tmp/t2-better-audio
 cd -
 ```
 
-> Run the same thing via the helper script (run as the normal user, not as
+> **Run the same thing via the helper script** (run as the normal user, not as
 > root); it will prompt for your sudo password:
-> `/usr/local/bin/post-install.sh`
+> `/usr/local/bin/t2-audio.sh`
 
 ---
 
@@ -74,5 +74,5 @@ sudo dracut-rebuild
 ```
 - apply to current session, resets on reboot
 ```bash
-echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode=2
+echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode
 ```
