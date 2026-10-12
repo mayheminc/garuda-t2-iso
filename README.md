@@ -1,6 +1,8 @@
 # T2 Garuda ISO Profile - Build Workflow
 MayhemINC 2026 - provided with no warranty or liability
 
+see https://wiki.t2linux.org/ for more information and setup tips
+
 * Requires an Arch/Garuda build environment with pacman, script, and garuda-tools
 
 This directory holds the scripts that turn an existing Garuda desktop profile
