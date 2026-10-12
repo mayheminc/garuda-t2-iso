@@ -1,5 +1,5 @@
 # Post-install notes for the garuda Apple T2 ISO
-# MayhemINC 2026 - provided with no warranty or liability
+MayhemINC 2026 - provided with no warranty or liability
 
 These are the manual steps to run **after** you have installed the built ISO
 on a T2 machine. This file is the reference; `post-install.sh` (the companion
