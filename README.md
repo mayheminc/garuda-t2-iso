@@ -163,7 +163,7 @@ After installing the built ISO, review `POST-INSTALL.md` (delivered to
 2. **Audio** - install `t2-better-audio`; run the helper from a **user account**
    (it prompts for sudo only where root is needed): `/usr/local/bin/t2-audio.sh`.
 3. **BCM Wi-Fi/BT firmware** - `apple-bcm-firmware-fetch` pulls drivers from a
-   macOS volume on first boot; otherwise extract them from an install image
+   macOS volume on live/first boot; non blocking if macOS volume is missing, manually extract them from an install image
    (see  https://wiki.t2linux.org/guides/wifi-bluetooth/).
 4. **Fan / wifi-bt modules** - `brcmfmac` loaded via `modules-load.d/t2.conf`;
    `brcmfmac_wcc` / `hci_bcm4377` blacklisted via `modprobe.d/t2.conf`;
