@@ -1,5 +1,5 @@
 # T2 Garuda ISO Profile - Build Workflow
-# MayhemINC 2026 - provided with no warranty or liability
+MayhemINC 2026 - provided with no warranty or liability
 
 * Requires an Arch/Garuda build environment with pacman, script, and garuda-tools
 
