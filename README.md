@@ -48,8 +48,7 @@ It will:
 3. **Pick a profile** - lists the selectable profiles (those with a
    `profile.conf`) and prompts you to select one (`q`/`Q` quits).
 4. **Create `<profile>-t2`** - `sudo cp -Rvi <profile> <profile>-t2`. If
-   `<profile>-t2` already exists, it prompts to delete it first (or aborts) so it
-   doesn't copy into a nested `<profile>-t2/<profile>` subdir.
+   `<profile>-t2` already exists, it prompts to delete it first (or aborts).
 5. **Run `setup-t2-profile.sh` inside `<profile>-t2`** - applies the T2 edits
    (see below).
 6. **Confirm and build** - asks `Proceed ... [y/N]`, then runs
