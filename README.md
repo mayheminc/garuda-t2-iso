@@ -118,6 +118,8 @@ Run from the profile directory itself. Every file is owned by root in a fresh
 profile, so all writes go through `sudo`. It is **idempotent** - re-running it
 does not duplicate package entries or edits.
 
+Looking at it again the live-overlay is probably redundant and needs pruned but it works for now.
+
 It produces a local editable profile by delinking the two files it actually
 edits (`Packages-Live`, `Packages-Root` - it copies the symlink's shared content
 to a local file rather than writing *through* the shared template), then:
