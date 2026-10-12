@@ -1,4 +1,4 @@
-# T2 Garuda ISO Profile - Build Workflow
+# Garuda Apple T2 ISO - Build Workflow
 MayhemINC 2026 - provided with no warranty or liability
 
 see https://wiki.t2linux.org/ for more information and setup tips
